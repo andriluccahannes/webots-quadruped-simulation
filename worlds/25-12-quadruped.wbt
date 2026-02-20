@@ -1,0 +1,36 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/epfl/biorob/protos/GhostDog.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/boston_dynamics/spot/protos/Spot.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.15209688181979403 0.27260270898948336 0.9500285793555322 1.0620447219608575
+  position 3.5 -2.8 1.5
+  follow "Spot"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 20.3 0 0
+  floorSize 50 10
+}
+DEF GHOST_DOG GhostDog {
+  hidden rotation_1 0.2810828793428376 -0.6785987087153155 0.6785987087154279 2.593567999881955
+  hidden rotation_11 0 -0.9999999999999999 0 0.7000000036743179
+  hidden rotation_16 0 -1 0 0.7000000005250545
+  translation -5 0 0.43
+  controller "<none>"
+  supervisor TRUE
+}
+DEF SPOT Spot {
+  translation 5 0 0.624
+  controller "spot_gym"
+  supervisor TRUE
+}

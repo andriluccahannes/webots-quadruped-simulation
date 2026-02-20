@@ -1,0 +1,79 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.3332593377177731 0.5235247290342294 -0.7841301371032413 1.3638074042341448
+  position -0.7561682554083126 0.9884617195406583 1.4498905072879364
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+Solid {
+  translation 0 0 0.7
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry DEF BALL_GEO Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  boundingObject USE BALL_GEO
+}
+DEF WALL_solid Solid {
+  translation 0 -0.57 0.25
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.178714 0.221744 0.597864
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.2 0.5
+      }
+    }
+  ]
+  name "wall_solid(1)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0 0.5 0.2
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(2)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation -0.54 -0.00998793 0.2
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(3)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.6 -0.00998385 0.2
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(4)"
+  boundingObject USE WALL_SHAPE
+}
+E-puck {
+  controller "my_e-puck_controller"
+}

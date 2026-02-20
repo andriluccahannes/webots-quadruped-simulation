@@ -1,0 +1,99 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.06706407316091825 0.06859293404052665 0.9953880748184494 1.552920991967785
+  position -0.06406764092556705 -9.64161253078548 1.5748691007897384
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 5 5
+}
+Robot {
+  translation -3.66839e-16 -0.000339726 0.01
+  rotation 1 -3.715507029108168e-14 -3.106806514723832e-13 0.0010201159762860625
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+        axis 1 0 0
+      }
+      device [
+        PositionSensor {
+          name "cart_sensor"
+        }
+        LinearMotor {
+        }
+      ]
+      endPoint Solid {
+        translation -6.838079999999997e-11 2.8645e-06 0.155
+        rotation 0.9901944262836344 0.13456809632289593 0.03750234137831637 1.8561164638322636e-05
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.135393 0.222049 1
+              metalness 0
+            }
+            geometry DEF GEO_BOX Box {
+              size 0.3 0.2 0.3
+            }
+          }
+          DEF POLE_JOINT HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 1 0
+            }
+            device [
+              PositionSensor {
+                name "pole_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 2.9633478689260013e-16 -0.14999999999975341 0.5000000000000469
+              rotation 0 1 0 0
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 1 0.190875 0.147021
+                    metalness 0
+                  }
+                  geometry DEF GEO_PENDULUM Box {
+                    size 0.1 0.05 1
+                  }
+                }
+              ]
+              boundingObject USE GEO_PENDULUM
+              physics Physics {
+                density -1
+                mass 0.1
+              }
+            }
+          }
+        ]
+        boundingObject USE GEO_BOX
+        physics Physics {
+          density -1
+          mass 0.5
+        }
+      }
+    }
+  ]
+  boundingObject Box {
+    size 5 0.1 0.01
+  }
+  physics Physics {
+    density -1
+    mass 10
+  }
+  recognitionColors [
+    0 0 0
+  ]
+  controller "openai_gym"
+  supervisor TRUE
+}
